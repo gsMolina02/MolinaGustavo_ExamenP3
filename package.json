@@ -1,0 +1,22 @@
+{
+  "name": "molinagustavo_examenp3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "npm start",
+    "lint": "npx eslint ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.33.0",
+    "jest": "^29.7.0"
+  },
+  "type": "module"
+}

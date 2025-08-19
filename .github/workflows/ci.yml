@@ -1,0 +1,37 @@
+name: CI/CD workflow
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name : Clonar repositorio
+        uses : actions/checkout@v4
+
+
+      - name : Configurar Node.js
+        uses :  actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name : Instalar dependencias
+        run: npm install
+
+      - name: Lint del codigo
+        run: npm run lint
+
+      - name: Ejecutar pruebas y generar cobertura
+        run: npm run test
+
+      - name: Revisar cobertura
+        run: |
+          npx jest --coverage --coverageReporters=text-summary
+          npx jest --coverage --coverageReporters=json-summary
+
+      - name: Enforce coverage ≥ 80%
+        run: |
+          node -e "const c=require('./coverage/coverage-summary.json').total; if(c.lines.pct<80||c.branches.pct<80) {console.error('Coverage < 80%'); process.exit(1);}"
