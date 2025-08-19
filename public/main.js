@@ -1,5 +1,29 @@
-import { toCelsius, toFahrenheit } from '../src/utils/conversions.js';
-import movingAverage from '../src/utils/movingAverage.js';
+
+// Funciones de conversión y media móvil (autónomas para el navegador)
+function toCelsius(f) {
+  if (!Number.isFinite(f)) throw new TypeError('El valor debe ser un número finito');
+  return Math.round(((f - 32) * 5 / 9) * 10) / 10;
+}
+function toFahrenheit(c) {
+  if (!Number.isFinite(c)) throw new TypeError('El valor debe ser un número finito');
+  return Math.round(((c * 9 / 5) + 32) * 10) / 10;
+}
+function movingAverage(series, window) {
+  if (!Array.isArray(series) || !series.every(Number.isFinite)) {
+    throw new TypeError('Todos los valores deben ser números finitos');
+  }
+  if (!Number.isInteger(window) || window < 2 || window > series.length) {
+    throw new RangeError('La ventana debe ser un entero >= 2 y <= series.length');
+  }
+  const result = [];
+  for (let i = 0; i <= series.length - window; i++) {
+    const slice = series.slice(i, i + window);
+    const avg = slice.reduce((a, b) => a + b, 0) / window;
+    result.push(Number(avg.toFixed(2)));
+  }
+  return result;
+}
+
 
 window.addEventListener('DOMContentLoaded', () => {
   // Conversión de temperaturas
