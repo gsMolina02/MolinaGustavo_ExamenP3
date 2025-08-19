@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Perfil — Clima & Conversión</title>
+	<style>
+		:root {
+			--color1: #2c3e50;
+			--color2: #2980b9;
+			--color3: #f7f7f7;
+		}
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: var(--color3);
+			margin: 0;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+		header, footer {
+			background: var(--color1);
+			color: #fff;
+			text-align: center;
+			padding: 1rem 0;
+		}
+		main {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			max-width: 600px;
+			margin: 2rem auto;
+			background: #fff;
+			border-radius: 12px;
+			box-shadow: 0 2px 12px #0002;
+			padding: 2rem 2rem 1rem 2rem;
+		}
+		h1, h2 {
+			color: var(--color2);
+			margin-top: 0;
+		}
+		.perfil {
+			margin-bottom: 2rem;
+			text-align: center;
+		}
+		.perfil ul {
+			list-style: disc inside;
+			padding: 0;
+			margin: 0.5rem 0 0 0;
+		}
+		.perfil li {
+			margin-bottom: 0.3rem;
+		}
+		form {
+			background: var(--color3);
+			padding: 1rem;
+			border-radius: 8px;
+			margin-bottom: 2rem;
+			box-shadow: 0 2px 8px #0001;
+			width: 100%;
+			max-width: 400px;
+		}
+		label { display: block; margin-top: 1rem; }
+		input, select { margin-top: 0.5rem; padding: 0.5rem; width: 100%; }
+		button { margin-top: 1rem; padding: 0.5rem 1rem; background: var(--color2); color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+		#temp-result, #avg-result { margin-top: 1rem; font-weight: bold; }
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Perfil — Clima & Conversión</h1>
+	</header>
+	<main>
+		<section class="perfil">
+			<h2>Gustavo Sebastián Molina</h2>
+			<p><strong>NRC:</strong> 12345<br>
+				 <strong>Correo:</strong> gsmolina2@espe.edu.ec</p>
+			<p>
+				Soy estudiante de Ingeniería en Software apasionado por la tecnología y el desarrollo web. Me gusta aprender nuevas herramientas y enfrentar retos que me permitan crecer profesionalmente. Disfruto trabajar en equipo y aportar soluciones creativas a los problemas. En mi tiempo libre, exploro nuevas tendencias tecnológicas y participo en proyectos colaborativos. Mi objetivo es contribuir al desarrollo de software de calidad y seguir aprendiendo cada día.
+			</p>
+			<ul>
+				<li>Me gusta el ciclismo y la fotografía.</li>
+				<li>Fan de la ciencia ficción y los videojuegos.</li>
+				<li>Siempre busco aprender algo nuevo cada semana.</li>
+			</ul>
+		</section>
+		<h2>Conversión de Temperaturas</h2>
+		<form id="temp-form">
+			<label for="temp-value">Valor:</label>
+			<input type="number" id="temp-value" required step="any">
+			<label for="temp-type">Tipo de conversión:</label>
+			<select id="temp-type">
+				<option value="c2f">Celsius a Fahrenheit</option>
+				<option value="f2c">Fahrenheit a Celsius</option>
+			</select>
+			<button type="submit">Convertir</button>
+			<div id="temp-result"></div>
+		</form>
+		<h2>Media Móvil Simple</h2>
+		<form id="avg-form">
+			<label for="avg-series">Serie de números (separados por coma):</label>
+			<input type="text" id="avg-series" placeholder="Ej: 10,20,30,40" required>
+			<label for="avg-window">Tamaño de ventana:</label>
+			<input type="number" id="avg-window" min="2" required>
+			<button type="submit">Calcular</button>
+			<div id="avg-result"></div>
+		</form>
+	</main>
+	<footer>
+		<p>&copy; 2025 Gustavo Molina — Examen P3</p>
+	</footer>
+	<script type="module" src="main.js"></script>
+</body>
+</html>
